@@ -21,7 +21,8 @@ namespace Address_Book_System
                 Console.WriteLine("1. Add a new contact");
                 Console.WriteLine("2. View all contacts");
                 Console.WriteLine("3. Edit a contact");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Delete a contact");
+                Console.WriteLine("5. Exit");
                 Console.Write("Choice: ");
                 string choice = Console.ReadLine();
 
@@ -126,6 +127,30 @@ namespace Address_Book_System
                         }
                         break;
                     case "4":
+                        if (contacts.Count == 0)
+                        {
+                            Console.WriteLine("No contacts found.");
+                        }
+                        else
+                        {
+                            Console.Write("Enter the first name of the contact you want to delete: ");
+                            string firstName = Console.ReadLine();
+                            Console.Write("Enter the last name of the contact you want to delete: ");
+                            string lastName = Console.ReadLine();
+
+                            Contact deleteContact = contacts.Find(c => c.FirstName.Equals(firstName) && c.LastName.Equals(lastName));
+                            if (deleteContact == null)
+                            {
+                                Console.WriteLine($"Contact {firstName} {lastName} not found.");
+                            }
+                            else
+                            {
+                                contacts.Remove(deleteContact);
+                                Console.WriteLine("Contact deleted!");
+                            }
+                        }
+                        break;
+                    case "5":
                         Console.WriteLine("Exiting...");
                         return;
                     default:
