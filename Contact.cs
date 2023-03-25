@@ -8,6 +8,18 @@ namespace Address_Book_System
 {
     class Contact
     {
+        class Collection {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+            public string State { get; set; }
+            public string Address { get; set; }
+            public string Zip { get; set; }
+            public string City { get; set; }
+            public string PhoneNumber { get; set; }
+            public string Email { get; set; }
+
+        }
+
         public string FirstName;
         public string LastName;
         public string State;
@@ -16,6 +28,7 @@ namespace Address_Book_System
         public string City;
         public string PhoneNumber;
         public string Email;
+
 
         public Contact(string firstName, string lastName, string address, string city, string state, string zip, string phoneNumber, string email)
         {
