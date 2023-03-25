@@ -20,7 +20,8 @@ namespace Address_Book_System
                 Console.WriteLine("Select an option:");
                 Console.WriteLine("1. Add a new contact");
                 Console.WriteLine("2. View all contacts");
-                Console.WriteLine("3. Exit");
+                Console.WriteLine("3. Edit a contact");
+                Console.WriteLine("4. Exit");
                 Console.Write("Choice: ");
                 string choice = Console.ReadLine();
 
@@ -45,6 +46,86 @@ namespace Address_Book_System
                         }
                         break;
                     case "3":
+                        if (contacts.Count == 0)
+                        {
+                            Console.WriteLine("No contacts found.");
+                        }
+                        else
+                        {
+                            Console.Write("Enter the first name of the contact you want to edit: ");
+                            string firstName = Console.ReadLine();
+                            Console.Write("Enter the last name of the contact you want to edit: ");
+                            string lastName = Console.ReadLine();
+
+                            Contact editContact = contacts.Find(c => c.FirstName.Equals(firstName) && c.LastName.Equals(lastName));
+                            if (editContact == null)
+                            {
+                                Console.WriteLine($"Contact {firstName} {lastName} not found.");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Enter new details (leave blank for no change):");
+                                Console.Write($"First Name [{editContact.FirstName}]: ");
+                                string newFirstName = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newFirstName))
+                                {
+                                    editContact.FirstName = newFirstName;
+                                }
+
+                                Console.Write($"Last Name [{editContact.LastName}]: ");
+                                string newLastName = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newLastName))
+                                {
+                                    editContact.LastName = newLastName;
+                                }
+
+                                Console.Write($"Address [{editContact.Address}]: ");
+                                string newAddress = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newAddress))
+                                {
+                                    editContact.Address = newAddress;
+                                }
+
+                                Console.Write($"City [{editContact.City}]: ");
+                                string newCity = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newCity))
+                                {
+                                    editContact.City = newCity;
+                                }
+
+                                Console.Write($"State [{editContact.State}]: ");
+                                string newState = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newState))
+                                {
+                                    editContact.State = newState;
+                                }
+
+                                Console.Write($"Zip [{editContact.Zip}]: ");
+                                string newZip = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newZip))
+                                {
+                                    editContact.Zip = newZip;
+                                }
+
+                                Console.Write($"Phone Number [{editContact.PhoneNumber}]: ");
+                                string newPhoneNumber = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newPhoneNumber))
+                                {
+                                    editContact.PhoneNumber = newPhoneNumber;
+                                }
+
+                                Console.Write($"Email [{editContact.Email}]: ");
+                                string newEmail = Console.ReadLine();
+                                if (!string.IsNullOrEmpty(newEmail))
+                                {
+                                    editContact.Email = newEmail;
+                                }
+
+                                Console.WriteLine("Contact updated!");
+                            }
+                        }
+                        break;
+                    case "4":
                         Console.WriteLine("Exiting...");
                         return;
                     default:
